@@ -1,0 +1,368 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css");
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    overflow-x: hidden;
+	line-height: 1;
+    font-family: "Montserrat", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+@keyframes bounce {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-15px);
+    }
+  }
+
+/*-------------------------------------------------------------------------------------*/
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+
+    background-color: #1d2a23;
+    width: 100%;
+    padding: 15px;
+}
+
+header nav img {
+    width: 10vw;
+
+    margin-left: 8vw;
+}
+
+
+.headline {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+
+    width: 100%;
+
+    background-image: url("img/desktop.png"); 
+    background-color: #1d2a23; 
+    height: 48vw; 
+    background-position: top;
+    background-repeat: no-repeat; 
+    background-size: cover; 
+
+    color: #ffe3c4;
+}
+
+.headline .texto {
+    max-width: 45vw;
+    margin-left: 10vw;
+}
+
+
+.headline h1 {
+    font-size: 3.7rem;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+}
+
+.headline h3 {
+    font-size: 1.2rem;
+
+    margin-bottom: 30px;
+}
+
+.headline a {
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    font-size: 1.2rem;
+
+    font-weight: 800;
+
+    padding: 1.5% 8% 1.5% 3%;
+
+    border-radius: 100px;
+    border: solid #ffe3c4 3px;
+    color: #ffe3c4;
+
+    background-color: #d8d0b621;
+    transition: 300ms;
+}
+
+.headline a svg {
+    position: absolute;
+
+    top: 20%;
+
+    width: 8%;
+    margin-left: 10px;
+}
+
+.headline a:hover {
+
+    background-color: #1d2a23;
+    transition: 300ms;
+    box-shadow: #d8d0b680 1px 1px 10px;
+    
+}
+
+.inferior {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: -6vw;
+}
+
+.seta-down {
+    width: 50px;
+    animation: bounce 1s infinite alternate;
+    -webkit-animation: bounce 1s infinite alternate;
+}
+/*-------------------------------------------------------------------------------------*/
+.quize {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background: #b78530;
+    background: -webkit-linear-gradient(34deg, #bd8e3e 0%, #f7bf5a 100%);
+    padding: 50px;
+}
+
+.imovel {
+    position: relative;
+}
+
+.quize .texto {
+    position: absolute;
+    bottom: 10%;
+    left: 10%;
+}
+
+.imovel p {
+    font-weight: 800;
+    font-size: 2.8vw;
+    color: #fff;
+}
+
+.imovel .imagem img {
+    width: 30vw;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    padding: 30px;
+
+    height: 250px;
+    width: 100%;
+
+    text-align: center;
+
+    /*    background: -webkit-linear-gradient(180deg, #7a7e69 0%, #345545, #2e4d3e 100%);*/
+
+
+  }
+
+  .question {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #ffffff;
+
+  }
+
+  .options button, .input-field input, .input-field button {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 600;
+    color:#ffe3c4;
+    margin: 8px 8px;
+    padding: 10px;
+    width: 200px;
+    font-size: 16px;
+    border-radius: 100px;
+    border: 3px solid #1d2a23;
+    cursor: pointer;
+    background: #1d2a23;
+    transition: 300ms;
+  }
+  ::-webkit-input-placeholder {
+    color: #b3c2b9;
+  }
+
+
+  .options button:hover, .input-field button:hover {
+    background: #27553d;
+
+    transition: 300ms;
+  }
+
+  .input-field input {
+    cursor: text;
+  }
+
+  .input-field button {
+    background-color: #1d2a23;
+    color: white;
+    border: none;
+
+  }
+
+  #final-message {
+    display: none;
+  }
+
+  .cta-button {
+    border-radius: 100px;
+    border: 3px solid #1d2a23;
+    background: #127944;
+    box-shadow: #00000027 0px 5px 10px;
+    color: #ffe3c4;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 12px;
+    display: inline-block;
+    margin-top: 20px;
+    transition: 300ms;
+  }
+
+  .cta-button:hover {
+    border: 3px solid #608f77;
+    background: #579c79;
+    transition: 300ms;
+  }
+  #final-message p {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1d2a23;
+  }
+
+/*-------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 700px) {
+
+
+    header nav {
+        justify-content: center;
+    }
+
+    header nav img {
+        margin-left: 0;
+        width: 25vw;
+
+    }
+
+    .headline {
+        background-image: url("img/mobile.png"); 
+        height: 155vw; 
+        align-items: center;
+        justify-content: end;
+
+    }
+
+    .headline .texto {
+        max-width: 70vw;
+        text-align: center;
+        margin-left: 0;
+        margin-bottom: 60px;
+
+    }
+
+    .headline h1 {
+        font-size: 2rem;
+        font-weight: 700;
+
+    }
+    
+    .headline h3 {
+        font-size: 1rem;
+    }
+
+    .headline a {
+        padding: 2% 13% 2% 3%;
+        font-size: 1rem;
+    }
+
+    .headline a svg {
+        top: 16%;
+    }
+
+    .inferior {
+        margin-top: -8vw;
+    }
+    .seta-down {
+        width: 30px;
+    }
+
+    .quize {
+        flex-direction: column;
+    }
+    .imovel .imagem img{
+        width: 80vw;
+    }
+
+    .imovel p {
+        font-size: 8vw;
+    }
+}

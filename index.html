@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lucas Veríssimo - Corretor de imóveis</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
+</head>
+<body>
+
+    <header>
+        <nav>
+            <img src="img/logo-horizontal.svg" alt="">
+        </nav>
+
+        <div class="headline">
+            <div class="texto">
+
+                <h1>Encontre o imóvel perfeito sem perder tempo </h1>
+                <h3>com o suporte de um corretor que realmente entende o que você precisa.</h3>
+                <a href="#quiz">Quero meu imóvel ideal
+                    <svg version="1.1" id="Camada_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 16 16" style="enable-background:new 0 0 16 16;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#ffe3c4;}
+</style>
+<g>
+	<path class="st0" d="M8,0.4C3.8,0.4,0.4,3.8,0.4,8s3.4,7.6,7.6,7.6s7.6-3.4,7.6-7.6S12.2,0.4,8,0.4z M8,13.5C5,13.5,2.5,11,2.5,8
+		C2.5,5,5,2.5,8,2.5c3,0,5.5,2.5,5.5,5.5C13.5,11,11,13.5,8,13.5z"/>
+	<path class="st0" d="M10.1,4.8H6.7c-0.6,0-1,0.5-1,1s0.5,1,1,1h1L5.1,9.4c-0.2,0.2-0.3,0.5-0.3,0.7c0,0.3,0.1,0.5,0.3,0.7
+		c0.2,0.2,0.5,0.3,0.7,0.3c0,0,0,0,0,0c0.3,0,0.5-0.1,0.7-0.3l2.6-2.6v1c0,0.6,0.5,1,1,1s1-0.5,1-1V5.8C11.2,5.2,10.7,4.8,10.1,4.8z
+		"/>
+</g>
+</svg>
+                </a>
+
+            </div>
+
+        </div>
+        <div class="inferior">
+            <img class="seta-down" src="img/seta-down.svg">
+        </div>
+    </header>
+    <main>
+
+<div id="quize" class="quize">
+
+
+
+
+    <div class="imovel">
+        <div class="texto"><p>Descubra o imóvel ideal para você</p></div>
+
+        <div class="imagem">
+            <img src="img/imovel.png">
+        </div>
+
+
+    </div>
+
+    <div class="container">
+        <div id="quiz-box">
+          <div class="question" id="question-text">Qual seu objetivo?</div>
+          <div class="options" id="options">
+            <button onclick="nextStep('Comprar')">Comprar</button>
+            <button onclick="nextStep('Alugar')">Alugar</button>
+          </div>
+        </div>
+        <div id="final-message">
+          <p>Perfeito! Com base nas suas respostas, já tenho opções que podem te surpreender.</p>
+          <a id="whatsapp-link" class="cta-button" target="_blank">Ver minhas opções</a>
+        </div>
+      </div>
+    
+      <script>
+        const questions = [
+          {
+            text: "Tipo de imóvel?",
+            type: "button",
+            options: ["Apartamento", "Casa", "Lote", "Outros"]
+          },
+          {
+            text: "Bairro ou região desejada?",
+            type: "input"
+          },
+          {
+            text: "Faixa de valor?",
+            type: "input"
+          },
+          {
+            text: "Em quanto tempo pretende comprar?",
+            type: "input"
+          },
+          {
+            text: "Informe seu nome e WhatsApp:",
+            type: "form"
+          }
+        ];
+    
+        let step = 0;
+        let answers = [];
+    
+        function nextStep(answer) {
+          answers.push(answer);
+          loadNextQuestion();
+        }
+    
+        function loadNextQuestion() {
+          const quiz = document.getElementById("quiz-box");
+          const questionText = document.getElementById("question-text");
+          const optionsDiv = document.getElementById("options");
+    
+          if (step >= questions.length) {
+            quiz.style.display = "none";
+            document.getElementById("final-message").style.display = "block";
+    
+            const nome = answers[5]; // Nome está agora na posição 5
+            const mensagem = encodeURIComponent(
+            `Olá! Meu nome é ${nome}.\n\nQuero ${answers[0]} um ${answers[1]} na região do(a) ${answers[2]}, na faixa de valor de ${answers[3]}, e pretendo fechar em ${answers[4]}.`
+            );
+    
+            document.getElementById("whatsapp-link").href = `https://wa.me/5581981104822?text=${mensagem}`;
+            return;
+          }
+    
+          const current = questions[step];
+          questionText.textContent = current.text;
+          optionsDiv.innerHTML = "";
+    
+          if (current.type === "button") {
+            current.options.forEach(opt => {
+              const btn = document.createElement("button");
+              btn.textContent = opt;
+              btn.onclick = () => nextStep(opt);
+              optionsDiv.appendChild(btn);
+            });
+          } else if (current.type === "input") {
+            const inputDiv = document.createElement("div");
+            inputDiv.classList.add("input-field");
+    
+            const input = document.createElement("input");
+            input.type = "text";
+            input.placeholder = "Digite sua resposta...";
+    
+            const btn = document.createElement("button");
+            btn.textContent = "Próximo";
+            btn.onclick = () => {
+              if (input.value.trim() !== "") {
+                nextStep(input.value.trim());
+              }
+            };
+    
+            inputDiv.appendChild(input);
+            inputDiv.appendChild(btn);
+            optionsDiv.appendChild(inputDiv);
+            input.focus();
+          } else if (current.type === "form") {
+            const formDiv = document.createElement("div");
+            formDiv.classList.add("input-field");
+    
+            const nomeInput = document.createElement("input");
+            nomeInput.type = "text";
+            nomeInput.placeholder = "Seu nome";
+    
+            const telInput = document.createElement("input");
+            telInput.type = "tel";
+            telInput.placeholder = "Seu WhatsApp";
+    
+            const btn = document.createElement("button");
+            btn.textContent = "Finalizar";
+            btn.onclick = () => {
+              const nome = nomeInput.value.trim();
+              const tel = telInput.value.trim();
+    
+              if (nome !== "" && tel !== "") {
+                nextStep(nome);         // Só o nome vai para a mensagem
+                answers.push(tel);      // Armazena o telefone, mas não mostra
+              }
+            };
+    
+            formDiv.appendChild(nomeInput);
+            formDiv.appendChild(telInput);
+            formDiv.appendChild(btn);
+            optionsDiv.appendChild(formDiv);
+            nomeInput.focus();
+          }
+    
+          step++;
+        }
+      </script>
+
+    </main>
+</body>
+</html>
