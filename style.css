@@ -100,7 +100,7 @@ header nav img {
 
     width: 100%;
 
-    background-image: url("img/desktop.png"); 
+    background-image: url("img/desktop.webp"); 
     background-color: #1d2a23; 
     height: 48vw; 
     background-position: top;
@@ -323,7 +323,7 @@ header nav img {
     }
 
     .headline {
-        background-image: url("img/mobile.png"); 
+        background-image: url("img/mobile.webp"); 
         height: 155vw; 
         align-items: center;
         justify-content: end;
