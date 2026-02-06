@@ -42,7 +42,7 @@ body {
 
 h1 {
     color: #fff;
-    font-size: 3rem;
+    font-size: 1.5rem;
 }
 
 h2 {
@@ -119,4 +119,5 @@ button {
 .rodape img{
     max-width: 70vw;
     width: 300px;
+
 }
